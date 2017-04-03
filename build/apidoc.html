@@ -1,0 +1,902 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a
+
+        href="https://github.com/Smile-SA/node-pushserver"
+
+    >node-pushserver (v0.5.4)</a>
+</h1>
+<h4>Cross-platform Push Notifications. A project providing a generic API to push messages using Apple's APN and Google's GCM services.</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.node-pushserver">module node-pushserver</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-pushserver.send">
+            function <span class="apidocSignatureSpan">node-pushserver.</span>send
+            <span class="apidocSignatureSpan">(pushAssociations, androidPayload, iosPayload)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-pushserver.sendUsers">
+            function <span class="apidocSignatureSpan">node-pushserver.</span>sendUsers
+            <span class="apidocSignatureSpan">(users, payload)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-pushserver.subscribe">
+            function <span class="apidocSignatureSpan">node-pushserver.</span>subscribe
+            <span class="apidocSignatureSpan">(deviceInfo)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-pushserver.unsubscribeDevice">
+            function <span class="apidocSignatureSpan">node-pushserver.</span>unsubscribeDevice
+            <span class="apidocSignatureSpan">(deviceToken)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-pushserver.unsubscribeUser">
+            function <span class="apidocSignatureSpan">node-pushserver.</span>unsubscribeUser
+            <span class="apidocSignatureSpan">(user)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">node-pushserver.</span>APNPusher</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">node-pushserver.</span>Config</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">node-pushserver.</span>GCMPusher</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">node-pushserver.</span>PushAssociations</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">node-pushserver.</span>Web</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.node-pushserver.APNPusher">module node-pushserver.APNPusher</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-pushserver.APNPusher.buildPayload">
+            function <span class="apidocSignatureSpan">node-pushserver.APNPusher.</span>buildPayload
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-pushserver.APNPusher.push">
+            function <span class="apidocSignatureSpan">node-pushserver.APNPusher.</span>push
+            <span class="apidocSignatureSpan">(tokens, payload)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.node-pushserver.Config">module node-pushserver.Config</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-pushserver.Config.get">
+            function <span class="apidocSignatureSpan">node-pushserver.Config.</span>get
+            <span class="apidocSignatureSpan">(key)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-pushserver.Config.initialize">
+            function <span class="apidocSignatureSpan">node-pushserver.Config.</span>initialize
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.node-pushserver.GCMPusher">module node-pushserver.GCMPusher</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-pushserver.GCMPusher.buildPayload">
+            function <span class="apidocSignatureSpan">node-pushserver.GCMPusher.</span>buildPayload
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-pushserver.GCMPusher.push">
+            function <span class="apidocSignatureSpan">node-pushserver.GCMPusher.</span>push
+            <span class="apidocSignatureSpan">(tokens, message)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.node-pushserver.PushAssociations">module node-pushserver.PushAssociations</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-pushserver.PushAssociations.add">
+            function <span class="apidocSignatureSpan">node-pushserver.PushAssociations.</span>add
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-pushserver.PushAssociations.getAll">
+            function <span class="apidocSignatureSpan">node-pushserver.PushAssociations.</span>getAll
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-pushserver.PushAssociations.getForUser">
+            function <span class="apidocSignatureSpan">node-pushserver.PushAssociations.</span>getForUser
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-pushserver.PushAssociations.getForUsers">
+            function <span class="apidocSignatureSpan">node-pushserver.PushAssociations.</span>getForUsers
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-pushserver.PushAssociations.removeDevice">
+            function <span class="apidocSignatureSpan">node-pushserver.PushAssociations.</span>removeDevice
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-pushserver.PushAssociations.removeDevices">
+            function <span class="apidocSignatureSpan">node-pushserver.PushAssociations.</span>removeDevices
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-pushserver.PushAssociations.removeForUser">
+            function <span class="apidocSignatureSpan">node-pushserver.PushAssociations.</span>removeForUser
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-pushserver.PushAssociations.updateTokens">
+            function <span class="apidocSignatureSpan">node-pushserver.PushAssociations.</span>updateTokens
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.node-pushserver.Web">module node-pushserver.Web</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-pushserver.Web.start">
+            function <span class="apidocSignatureSpan">node-pushserver.Web.</span>start
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.node-pushserver" id="apidoc.module.node-pushserver">module node-pushserver</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.node-pushserver.send" id="apidoc.element.node-pushserver.send">
+        function <span class="apidocSignatureSpan">node-pushserver.</span>send
+        <span class="apidocSignatureSpan">(pushAssociations, androidPayload, iosPayload)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">send = function (pushAssociations, androidPayload, iosPayload) {
+    var androidTokens = _(pushAssociations).where({type: &#x27;android&#x27;}).map(&#x27;token&#x27;).value();
+    var iosTokens = _(pushAssociations).where({type: &#x27;ios&#x27;}).map(&#x27;token&#x27;).value();
+
+    if (androidPayload &#x26;&#x26; androidTokens.length &#x3e; 0) {
+        var gcmPayload = gcmPusher.buildPayload(androidPayload);
+        gcmPusher.push(androidTokens, gcmPayload);
+    }
+
+    if (iosPayload &#x26;&#x26; iosTokens.length &#x3e; 0) {
+        var apnPayload = apnPusher.buildPayload(iosPayload);
+        apnPusher.push(iosTokens, apnPayload);
+    }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+var config = require(&#x27;./Config&#x27;)
+var _ = require(&#x27;lodash&#x27;);
+var gcm = require(&#x27;node-gcm&#x27;);
+var pushAssociations = require(&#x27;./PushAssociations&#x27;);
+
+
+var push = function (tokens, message) {
+    gcmSender().<span class="apidocCodeKeywordSpan">send</span>(message, tokens, 4, function (err, res) {
+if(err) console.log(err);
+
+if (res) {
+    var mappedResults = _.map(_.zip(tokens, res.results), function (arr) {
+        return _.merge({token: arr[0]}, arr[1]);
+    });
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-pushserver.sendUsers" id="apidoc.element.node-pushserver.sendUsers">
+        function <span class="apidocSignatureSpan">node-pushserver.</span>sendUsers
+        <span class="apidocSignatureSpan">(users, payload)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">sendUsers = function (users, payload) {
+    pushAssociations.getForUsers(users, function (err, pushAss) {
+        if (err) return;
+        send(pushAss, payload);
+    });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-pushserver.subscribe" id="apidoc.element.node-pushserver.subscribe">
+        function <span class="apidocSignatureSpan">node-pushserver.</span>subscribe
+        <span class="apidocSignatureSpan">(deviceInfo)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">subscribe = function (deviceInfo) {
+    pushAssociations.add(deviceInfo.user, deviceInfo.type, deviceInfo.token);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    res.status(406).send();
+}
+});
+
+// Main API
+app.post(&#x27;/subscribe&#x27;, function (req, res) {
+var deviceInfo = req.body;
+push.<span class="apidocCodeKeywordSpan">subscribe</span>(deviceInfo);
+
+res.send();
+});
+
+app.post(&#x27;/unsubscribe&#x27;, function (req, res) {
+var data = req.body;
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-pushserver.unsubscribeDevice" id="apidoc.element.node-pushserver.unsubscribeDevice">
+        function <span class="apidocSignatureSpan">node-pushserver.</span>unsubscribeDevice
+        <span class="apidocSignatureSpan">(deviceToken)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">unsubscribeDevice = function (deviceToken) {
+    pushAssociations.removeDevice(deviceToken);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+app.post(&#x27;/unsubscribe&#x27;, function (req, res) {
+    var data = req.body;
+
+    if (data.user) {
+        push.unsubscribeUser(data.user);
+    } else if (data.token) {
+        push.<span class="apidocCodeKeywordSpan">unsubscribeDevice</span>(data.token);
+    } else {
+        return res.status(503).send();
+    }
+
+    res.send();
+});
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-pushserver.unsubscribeUser" id="apidoc.element.node-pushserver.unsubscribeUser">
+        function <span class="apidocSignatureSpan">node-pushserver.</span>unsubscribeUser
+        <span class="apidocSignatureSpan">(user)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">unsubscribeUser = function (user) {
+    pushAssociations.removeForUser(user);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+res.send();
+});
+
+app.post(&#x27;/unsubscribe&#x27;, function (req, res) {
+var data = req.body;
+
+if (data.user) {
+    push.<span class="apidocCodeKeywordSpan">unsubscribeUser</span>(data.user);
+} else if (data.token) {
+    push.unsubscribeDevice(data.token);
+} else {
+    return res.status(503).send();
+}
+
+res.send();
+...</pre></li>
+    </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.node-pushserver.APNPusher" id="apidoc.module.node-pushserver.APNPusher">module node-pushserver.APNPusher</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.node-pushserver.APNPusher.buildPayload" id="apidoc.element.node-pushserver.APNPusher.buildPayload">
+        function <span class="apidocSignatureSpan">node-pushserver.APNPusher.</span>buildPayload
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">buildPayload = function (options) {
+    var notif = new apn.Notification(options.payload);
+
+    notif.expiry = options.expiry || 0;
+    notif.alert = options.alert;
+    notif.badge = options.badge;
+    notif.sound = options.sound;
+
+    return notif;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-pushserver.APNPusher.push" id="apidoc.element.node-pushserver.APNPusher.push">
+        function <span class="apidocSignatureSpan">node-pushserver.APNPusher.</span>push
+        <span class="apidocSignatureSpan">(tokens, payload)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">push = function (tokens, payload) {
+    apnSender().pushNotification(payload, tokens);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+var handleResults = function (results) {
+var idsToUpdate = [],
+    idsToDelete = [];
+
+results.forEach(function (result) {
+    if (!!result.registration_id) {
+        idsToUpdate.<span class="apidocCodeKeywordSpan">push</span>({from: result.token, to: result.registration_id});
+
+    } else if (result.error === &#x27;InvalidRegistration&#x27; || result.error === &#x27;NotRegistered&#x27;) {
+        idsToDelete.push(result.token);
+    }
+});
+
+if (idsToUpdate.length &#x3e; 0) pushAssociations.updateTokens(idsToUpdate);
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.node-pushserver.Config" id="apidoc.module.node-pushserver.Config">module node-pushserver.Config</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.node-pushserver.Config.get" id="apidoc.element.node-pushserver.Config.get">
+        function <span class="apidocSignatureSpan">node-pushserver.Config.</span>get
+        <span class="apidocSignatureSpan">(key)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">get = function (key) {
+    if (!config) initialize(&#x27;../config.json&#x27;);
+    return config[key];
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    notif.badge = options.badge;
+    notif.sound = options.sound;
+
+    return notif;
+};
+
+var apnSender = _.once(function () {
+    var apnConnection = new apn.Connection(config.<span class="apidocCodeKeywordSpan">get</span>(&#x27;apn&#x27;).connection);
+
+    apnConnection.on(&#x27;transmissionError&#x27;, onTransmissionError);
+    initAppFeedback();
+
+    return apnConnection;
+});
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-pushserver.Config.initialize" id="apidoc.element.node-pushserver.Config.initialize">
+        function <span class="apidocSignatureSpan">node-pushserver.Config.</span>initialize
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">initialize = function () {
+  if (ran) {
+    return result;
+  }
+  ran = true;
+  result = func.apply(this, arguments);
+
+  // clear the `func` variable so the function may be garbage collected
+  func = null;
+  return result;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.node-pushserver.GCMPusher" id="apidoc.module.node-pushserver.GCMPusher">module node-pushserver.GCMPusher</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.node-pushserver.GCMPusher.buildPayload" id="apidoc.element.node-pushserver.GCMPusher.buildPayload">
+        function <span class="apidocSignatureSpan">node-pushserver.GCMPusher.</span>buildPayload
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">buildPayload = function (options) {
+    return new gcm.Message(options);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-pushserver.GCMPusher.push" id="apidoc.element.node-pushserver.GCMPusher.push">
+        function <span class="apidocSignatureSpan">node-pushserver.GCMPusher.</span>push
+        <span class="apidocSignatureSpan">(tokens, message)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">push = function (tokens, message) {
+    gcmSender().send(message, tokens, 4, function (err, res) {
+        if(err) console.log(err);
+
+        if (res) {
+            var mappedResults = _.map(_.zip(tokens, res.results), function (arr) {
+                return _.merge({token: arr[0]}, arr[1]);
+            });
+
+            handleResults(mappedResults);
+        }
+    })
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+var handleResults = function (results) {
+var idsToUpdate = [],
+    idsToDelete = [];
+
+results.forEach(function (result) {
+    if (!!result.registration_id) {
+        idsToUpdate.<span class="apidocCodeKeywordSpan">push</span>({from: result.token, to: result.registration_id});
+
+    } else if (result.error === &#x27;InvalidRegistration&#x27; || result.error === &#x27;NotRegistered&#x27;) {
+        idsToDelete.push(result.token);
+    }
+});
+
+if (idsToUpdate.length &#x3e; 0) pushAssociations.updateTokens(idsToUpdate);
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.node-pushserver.PushAssociations" id="apidoc.module.node-pushserver.PushAssociations">module node-pushserver.PushAssociations</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.node-pushserver.PushAssociations.add" id="apidoc.element.node-pushserver.PushAssociations.add">
+        function <span class="apidocSignatureSpan">node-pushserver.PushAssociations.</span>add
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">add = function () {
+    if (_.isUndefined(PushAssociation)) {
+        initialize();
+    }
+
+    return func.apply(null, arguments);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-pushserver.PushAssociations.getAll" id="apidoc.element.node-pushserver.PushAssociations.getAll">
+        function <span class="apidocSignatureSpan">node-pushserver.PushAssociations.</span>getAll
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getAll = function () {
+    if (_.isUndefined(PushAssociation)) {
+        initialize();
+    }
+
+    return func.apply(null, arguments);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    } else {
+        res.status(503).send();
+    }
+});
+});
+
+app.get(&#x27;/users&#x27;, function (req, res) {
+pushAssociations.<span class="apidocCodeKeywordSpan">getAll</span>(function (err, pushAss) {
+    if (!err) {
+        var users = _(pushAss).map(&#x27;user&#x27;).unique().value();
+        res.send({
+            &#x22;users&#x22;: users
+        });
+    } else {
+        res.status(503).send()
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-pushserver.PushAssociations.getForUser" id="apidoc.element.node-pushserver.PushAssociations.getForUser">
+        function <span class="apidocSignatureSpan">node-pushserver.PushAssociations.</span>getForUser
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getForUser = function () {
+    if (_.isUndefined(PushAssociation)) {
+        initialize();
+    }
+
+    return func.apply(null, arguments);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    var notificationsValid = sendNotifications(notifs);
+
+    res.status(notificationsValid ? 200 : 400).send();
+});
+
+// Utils API
+app.get(&#x27;/users/:user/associations&#x27;, function (req, res) {
+    pushAssociations.<span class="apidocCodeKeywordSpan">getForUser</span>(req.params.user, function (err, items) {
+        if (!err) {
+            res.send({&#x22;associations&#x22;: items});
+        } else {
+            res.status(503).send();
+        }
+    });
+});
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-pushserver.PushAssociations.getForUsers" id="apidoc.element.node-pushserver.PushAssociations.getForUsers">
+        function <span class="apidocSignatureSpan">node-pushserver.PushAssociations.</span>getForUsers
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getForUsers = function () {
+    if (_.isUndefined(PushAssociation)) {
+        initialize();
+    }
+
+    return func.apply(null, arguments);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-pushserver.PushAssociations.removeDevice" id="apidoc.element.node-pushserver.PushAssociations.removeDevice">
+        function <span class="apidocSignatureSpan">node-pushserver.PushAssociations.</span>removeDevice
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">removeDevice = function () {
+    if (_.isUndefined(PushAssociation)) {
+        initialize();
+    }
+
+    return func.apply(null, arguments);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+var onTransmissionError = function (errorCode, notification, recipient) {
+console.error(&#x27;Error while pushing to APN: &#x27; + errorCode);
+// Invalid token =&#x3e; remove device
+if (errorCode === 8) {
+    var token = recipient.token.toString(&#x27;hex&#x27;).toUpperCase();
+
+    console.log(&#x27;Invalid token: removing device &#x27; + token);
+    pushAssociations.<span class="apidocCodeKeywordSpan">removeDevice</span>(token);
+}
+};
+
+var onFeedback = function (deviceInfos) {
+console.log(&#x27;Feedback service, number of devices to remove: &#x27; + deviceInfos.length);
+
+pushAssociations.removeDevices(deviceInfos.map(function (deviceInfo) {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-pushserver.PushAssociations.removeDevices" id="apidoc.element.node-pushserver.PushAssociations.removeDevices">
+        function <span class="apidocSignatureSpan">node-pushserver.PushAssociations.</span>removeDevices
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">removeDevices = function () {
+    if (_.isUndefined(PushAssociation)) {
+        initialize();
+    }
+
+    return func.apply(null, arguments);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    pushAssociations.removeDevice(token);
+}
+};
+
+var onFeedback = function (deviceInfos) {
+console.log(&#x27;Feedback service, number of devices to remove: &#x27; + deviceInfos.length);
+
+pushAssociations.<span class="apidocCodeKeywordSpan">removeDevices</span>(deviceInfos.map(function (deviceInfo) {
+    return deviceInfo.token.toString(&#x27;hex&#x27;);
+}));
+};
+
+var initAppFeedback = function () {
+var apnFeedback = new apn.Feedback(config.get(&#x27;apn&#x27;).feedback)
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-pushserver.PushAssociations.removeForUser" id="apidoc.element.node-pushserver.PushAssociations.removeForUser">
+        function <span class="apidocSignatureSpan">node-pushserver.PushAssociations.</span>removeForUser
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">removeForUser = function () {
+    if (_.isUndefined(PushAssociation)) {
+        initialize();
+    }
+
+    return func.apply(null, arguments);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-pushserver.PushAssociations.updateTokens" id="apidoc.element.node-pushserver.PushAssociations.updateTokens">
+        function <span class="apidocSignatureSpan">node-pushserver.PushAssociations.</span>updateTokens
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">updateTokens = function () {
+    if (_.isUndefined(PushAssociation)) {
+        initialize();
+    }
+
+    return func.apply(null, arguments);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+            idsToUpdate.push({from: result.token, to: result.registration_id});
+
+        } else if (result.error === &#x27;InvalidRegistration&#x27; || result.error === &#x27;NotRegistered&#x27;) {
+            idsToDelete.push(result.token);
+        }
+    });
+
+    if (idsToUpdate.length &#x3e; 0) pushAssociations.<span class="apidocCodeKeywordSpan">updateTokens</span>(idsToUpdate);
+    if (idsToDelete.length &#x3e; 0) pushAssociations.removeDevices(idsToDelete);
+};
+
+var buildPayload = function (options) {
+    return new gcm.Message(options);
+};
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.node-pushserver.Web" id="apidoc.module.node-pushserver.Web">module node-pushserver.Web</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.node-pushserver.Web.start" id="apidoc.element.node-pushserver.Web.start">
+        function <span class="apidocSignatureSpan">node-pushserver.Web.</span>start
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">start = function () {
+    app.listen(config.get(&#x27;webPort&#x27;));
+    console.log(&#x27;Listening on port &#x27; + config.get(&#x27;webPort&#x27;) + &#x22;...&#x22;);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
