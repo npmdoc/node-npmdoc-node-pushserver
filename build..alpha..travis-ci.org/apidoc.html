@@ -293,6 +293,71 @@
 
     </ol></li>
 
+    <li class="apidocModuleLi"><a href="#apidoc.module.node-pushserver.send">module node-pushserver.send</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-pushserver.send.send">
+            function <span class="apidocSignatureSpan">node-pushserver.</span>send
+            <span class="apidocSignatureSpan">(pushAssociations, androidPayload, iosPayload)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.node-pushserver.sendUsers">module node-pushserver.sendUsers</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-pushserver.sendUsers.sendUsers">
+            function <span class="apidocSignatureSpan">node-pushserver.</span>sendUsers
+            <span class="apidocSignatureSpan">(users, payload)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.node-pushserver.subscribe">module node-pushserver.subscribe</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-pushserver.subscribe.subscribe">
+            function <span class="apidocSignatureSpan">node-pushserver.</span>subscribe
+            <span class="apidocSignatureSpan">(deviceInfo)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.node-pushserver.unsubscribeDevice">module node-pushserver.unsubscribeDevice</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-pushserver.unsubscribeDevice.unsubscribeDevice">
+            function <span class="apidocSignatureSpan">node-pushserver.</span>unsubscribeDevice
+            <span class="apidocSignatureSpan">(deviceToken)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.node-pushserver.unsubscribeUser">module node-pushserver.unsubscribeUser</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-pushserver.unsubscribeUser.unsubscribeUser">
+            function <span class="apidocSignatureSpan">node-pushserver.</span>unsubscribeUser
+            <span class="apidocSignatureSpan">(user)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
 </ol></div>
 
 <div class="apidocSectionDiv">
@@ -889,6 +954,181 @@ var buildPayload = function (options) {
     console.log(&#x27;Listening on port &#x27; + config.get(&#x27;webPort&#x27;) + &#x22;...&#x22;);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.node-pushserver.send" id="apidoc.module.node-pushserver.send">module node-pushserver.send</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.node-pushserver.send.send" id="apidoc.element.node-pushserver.send.send">
+        function <span class="apidocSignatureSpan">node-pushserver.</span>send
+        <span class="apidocSignatureSpan">(pushAssociations, androidPayload, iosPayload)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">send = function (pushAssociations, androidPayload, iosPayload) {
+    var androidTokens = _(pushAssociations).where({type: &#x27;android&#x27;}).map(&#x27;token&#x27;).value();
+    var iosTokens = _(pushAssociations).where({type: &#x27;ios&#x27;}).map(&#x27;token&#x27;).value();
+
+    if (androidPayload &#x26;&#x26; androidTokens.length &#x3e; 0) {
+        var gcmPayload = gcmPusher.buildPayload(androidPayload);
+        gcmPusher.push(androidTokens, gcmPayload);
+    }
+
+    if (iosPayload &#x26;&#x26; iosTokens.length &#x3e; 0) {
+        var apnPayload = apnPusher.buildPayload(iosPayload);
+        apnPusher.push(iosTokens, apnPayload);
+    }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+var config = require(&#x27;./Config&#x27;)
+var _ = require(&#x27;lodash&#x27;);
+var gcm = require(&#x27;node-gcm&#x27;);
+var pushAssociations = require(&#x27;./PushAssociations&#x27;);
+
+
+var push = function (tokens, message) {
+    gcmSender().<span class="apidocCodeKeywordSpan">send</span>(message, tokens, 4, function (err, res) {
+if(err) console.log(err);
+
+if (res) {
+    var mappedResults = _.map(_.zip(tokens, res.results), function (arr) {
+        return _.merge({token: arr[0]}, arr[1]);
+    });
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.node-pushserver.sendUsers" id="apidoc.module.node-pushserver.sendUsers">module node-pushserver.sendUsers</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.node-pushserver.sendUsers.sendUsers" id="apidoc.element.node-pushserver.sendUsers.sendUsers">
+        function <span class="apidocSignatureSpan">node-pushserver.</span>sendUsers
+        <span class="apidocSignatureSpan">(users, payload)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">sendUsers = function (users, payload) {
+    pushAssociations.getForUsers(users, function (err, pushAss) {
+        if (err) return;
+        send(pushAss, payload);
+    });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.node-pushserver.subscribe" id="apidoc.module.node-pushserver.subscribe">module node-pushserver.subscribe</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.node-pushserver.subscribe.subscribe" id="apidoc.element.node-pushserver.subscribe.subscribe">
+        function <span class="apidocSignatureSpan">node-pushserver.</span>subscribe
+        <span class="apidocSignatureSpan">(deviceInfo)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">subscribe = function (deviceInfo) {
+    pushAssociations.add(deviceInfo.user, deviceInfo.type, deviceInfo.token);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    res.status(406).send();
+}
+});
+
+// Main API
+app.post(&#x27;/subscribe&#x27;, function (req, res) {
+var deviceInfo = req.body;
+push.<span class="apidocCodeKeywordSpan">subscribe</span>(deviceInfo);
+
+res.send();
+});
+
+app.post(&#x27;/unsubscribe&#x27;, function (req, res) {
+var data = req.body;
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.node-pushserver.unsubscribeDevice" id="apidoc.module.node-pushserver.unsubscribeDevice">module node-pushserver.unsubscribeDevice</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.node-pushserver.unsubscribeDevice.unsubscribeDevice" id="apidoc.element.node-pushserver.unsubscribeDevice.unsubscribeDevice">
+        function <span class="apidocSignatureSpan">node-pushserver.</span>unsubscribeDevice
+        <span class="apidocSignatureSpan">(deviceToken)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">unsubscribeDevice = function (deviceToken) {
+    pushAssociations.removeDevice(deviceToken);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+app.post(&#x27;/unsubscribe&#x27;, function (req, res) {
+    var data = req.body;
+
+    if (data.user) {
+        push.unsubscribeUser(data.user);
+    } else if (data.token) {
+        push.<span class="apidocCodeKeywordSpan">unsubscribeDevice</span>(data.token);
+    } else {
+        return res.status(503).send();
+    }
+
+    res.send();
+});
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.node-pushserver.unsubscribeUser" id="apidoc.module.node-pushserver.unsubscribeUser">module node-pushserver.unsubscribeUser</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.node-pushserver.unsubscribeUser.unsubscribeUser" id="apidoc.element.node-pushserver.unsubscribeUser.unsubscribeUser">
+        function <span class="apidocSignatureSpan">node-pushserver.</span>unsubscribeUser
+        <span class="apidocSignatureSpan">(user)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">unsubscribeUser = function (user) {
+    pushAssociations.removeForUser(user);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+res.send();
+});
+
+app.post(&#x27;/unsubscribe&#x27;, function (req, res) {
+var data = req.body;
+
+if (data.user) {
+    push.<span class="apidocCodeKeywordSpan">unsubscribeUser</span>(data.user);
+} else if (data.token) {
+    push.unsubscribeDevice(data.token);
+} else {
+    return res.status(503).send();
+}
+
+res.send();
+...</pre></li>
     </ul>
 
 
