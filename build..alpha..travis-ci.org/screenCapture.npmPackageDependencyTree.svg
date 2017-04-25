@@ -22,8 +22,8 @@
 <tspan x="10" y="314">  │ │   └── mime@1.2.11 </tspan>
 <tspan x="10" y="330">  │ ├── cookie@0.1.0 </tspan>
 <tspan x="10" y="346">  │ ├── cookie-signature@1.0.1 </tspan>
-<tspan x="10" y="362">  │ ├─┬ debug@2.6.3 </tspan>
-<tspan x="10" y="378">  │ │ └── ms@0.7.2 </tspan>
+<tspan x="10" y="362">  │ ├─┬ debug@2.6.4 </tspan>
+<tspan x="10" y="378">  │ │ └── ms@0.7.3 </tspan>
 <tspan x="10" y="394">  │ ├── fresh@0.1.0 </tspan>
 <tspan x="10" y="410">  │ ├── methods@0.0.1 </tspan>
 <tspan x="10" y="426">  │ ├── mkdirp@0.3.4 </tspan>
