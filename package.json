@@ -1,7 +1,7 @@
 {
     "author": "kai zhu <kaizhu256@gmail.com>",
     "buildNpmdoc": "node-pushserver",
-    "description": "api documentation for [node-pushserver (v0.5.4)](https://github.com/Smile-SA/node-pushserver) [![npm package](https://img.shields.io/npm/v/npmdoc-node-pushserver.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-node-pushserver) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-node-pushserver.svg)](https://travis-ci.org/npmdoc/node-npmdoc-node-pushserver)",
+    "description": "#### basic api documentation for  [node-pushserver (v0.5.4)](https://github.com/Smile-SA/node-pushserver)  [![npm package](https://img.shields.io/npm/v/npmdoc-node-pushserver.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-node-pushserver) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-node-pushserver.svg)](https://travis-ci.org/npmdoc/node-npmdoc-node-pushserver)",
     "devDependencies": {
         "electron-lite": "kaizhu256/node-electron-lite#alpha",
         "node-pushserver": "*",

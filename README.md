@@ -1,4 +1,7 @@
-# api documentation for  [node-pushserver (v0.5.4)](https://github.com/Smile-SA/node-pushserver)  [![npm package](https://img.shields.io/npm/v/npmdoc-node-pushserver.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-node-pushserver) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-node-pushserver.svg)](https://travis-ci.org/npmdoc/node-npmdoc-node-pushserver)
+# npmdoc-node-pushserver
+
+#### basic api documentation for  [node-pushserver (v0.5.4)](https://github.com/Smile-SA/node-pushserver)  [![npm package](https://img.shields.io/npm/v/npmdoc-node-pushserver.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-node-pushserver) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-node-pushserver.svg)](https://travis-ci.org/npmdoc/node-npmdoc-node-pushserver)
+
 #### Cross-platform Push Notifications. A project providing a generic API to push messages using Apple's APN and Google's GCM services.
 
 [![NPM](https://nodei.co/npm/node-pushserver.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/node-pushserver)
